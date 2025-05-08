@@ -63,7 +63,7 @@ public void prosesKRS() { //memanggil antrian untuk proses KRS (setiap 2 mahasis
     System.out.println("Sudah 30 mahasiswa di proses. Tidak bisa memproses lagi");
     return;
   }
-  System.out.println("Memproses KRS untuk 2 mahasiswa terdepan: ");
+  System.out.println("Memproses KRS untuk 2 mahasiswa: ");
   //proses mahasiswa pertama
   Mahasiswa18 mhs1 =  data[front];
   System.out.print("1. ");
