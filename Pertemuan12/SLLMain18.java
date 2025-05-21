@@ -16,21 +16,20 @@ public class SLLMain18 {
     sll.addLast(mhs2);
     sll.addLast(mhs3);
 
-     // Akses data index ke-1
     System.out.println("data index 1 : ");
-    sll.getData(1); // Cintia
+    sll.getData(1);//cintiaa
 
-    // Cari index berdasarkan nama
+    //index berdasarkan nama
     System.out.println("data mahasiswa an Bimon berada pada index : " + sll.indexOf("Bimon"));
     System.out.println();
 
-    // Hapus first dan last
-    sll.removeFirst(); // hapus Dirga
-    sll.removeLast();  // hapus Alvaro
-    sll.print();       // tersisa: Cintia, Bimon
+    //hapus first dan last
+    sll.removeFirst();// hapus dirga
+    sll.removeLast(); // hapus alvaro
+    sll.print();//tinggal cintia, bimon
 
-    // Hapus index ke-0 (Cintia)
+    //hapus index ke 0 cintia
     sll.removeAt(0);
-    sll.print();       // tersisa: Bimon
+    sll.print(); // terisa bimon
   }
 }
