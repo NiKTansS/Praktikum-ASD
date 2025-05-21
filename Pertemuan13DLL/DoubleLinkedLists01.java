@@ -3,10 +3,12 @@ package Pertemuan13DLL;
 public class DoubleLinkedLists01 {
   Node01 head;
   Node01 tail;
+  int size;
 
   public DoubleLinkedLists01() {
     head = null;
     tail = null;
+    size = 0;
   }
 
   public boolean isEmpty() {
@@ -22,6 +24,7 @@ public class DoubleLinkedLists01 {
       head.prev = newNode;
       head = newNode;
     }
+    size++;
   }
 
   public void addLast(Mahasiswa01 data) {
@@ -32,6 +35,30 @@ public class DoubleLinkedLists01 {
       tail.next = newNode;
       newNode.prev = tail;
       tail = newNode;
+    }
+    size++;
+  }
+
+  public void add(Mahasiswa01 data, int index) { // jawaban tugas no 1
+    if (index < 0 || index > size) {
+      System.out.println("Indeks di luar jangkauan.");
+      return;
+    }
+    if (index == 0) {
+      addFirst(data);
+    } else if (index == size) {
+      addLast(data);
+    } else {
+      Node01 newNode = new Node01(data);
+      Node01 current = head;
+      for (int i = 0; i < index -1; i++) {
+        current = current.next;
+      }
+      newNode.next = current.next;
+      newNode.prev = current;
+      current.next.prev = newNode;
+      current.next = newNode;
+      size++;
     }
   }
 
@@ -61,7 +88,7 @@ public class DoubleLinkedLists01 {
       current.next.prev = newNode;
       current.next = newNode;
     }
-
+    size++;
     System.out.println("Node berhasil disisipkan setelah NIM " + keyNim);
   }
 
@@ -75,6 +102,37 @@ public class DoubleLinkedLists01 {
       current.data.tampil();
       current = current.next;
     }
+  }
+
+  public void getFirst() { // jawaban tugas no 4
+    if (isEmpty()) {
+      System.out.println("List kosong");
+    } else {
+      System.out.println("Data pertama:");
+      head.data.tampil();
+    }
+  }
+
+  public void getLast() { // jawaban tugas no 4
+    if (isEmpty()) {
+      System.out.println("List kosong");
+    } else {
+      System.out.println("Data Terakhir:");
+      tail.data.tampil();
+    }
+  }
+
+  public void getIndex(int index) { // jawaban tugas no 4
+    if (index < 0 || index >= size) {
+      System.out.println("Indeks tidak valid.");
+      return;
+    }
+    Node01 current = head;
+    for (int i = 0; i < index; i++) {
+      current = current.next;
+    }
+    System.out.println("Data pada indeks " + index + ": ");
+    current.data.tampil();
   }
 
   public void removeFirst() {
@@ -113,6 +171,50 @@ public class DoubleLinkedLists01 {
     removeData.tampil();
   }
 
+  public void removeAfter(String keyNim) {  // jawaban tugas no 2
+    Node01 current = head;
+    while (current != null && !current.data.nim.equals(keyNim)) {
+      current = current.next;
+    }
+    if (current == null || current.next == null) {
+      System.out.println("Tidak bisa menghapus setelah NIM: " + keyNim);
+      return;
+    }
+    Node01 removed = current.next;
+    if (removed == tail) {
+      tail = current;
+      current.next = null;
+    } else {
+      current.next = removed.next;
+      removed.next.prev = current;
+    }
+    size--;
+    System.out.println("Data setelah NIM " + keyNim + " berhasil dihapus:");
+    removed.data.tampil();
+  }
+
+  public void remove(int index) { // jawaban tugas no 3
+    if (index < 0 || index >= size) {
+      System.out.println("Indeks tidak valid.");
+      return;
+    }
+    if (index == 0) {
+      removeFirst();
+    } else if (index == size -1) {
+      removeLast();
+    } else {
+      Node01 current = head;
+      for (int i = 0; i < index; i++) {
+        current = current.next;
+      }
+      current.prev.next = current.next;
+      current.next.prev = current.prev;
+      System.out.println("Data berhasil dihapus pada indeks " + index);
+      current.data.tampil();
+      size--;
+    }
+  }
+
   public Node01 search(String nim) {
     Node01 current = head;
     while (current != null) {
@@ -122,5 +224,9 @@ public class DoubleLinkedLists01 {
       current = current.next;
     }
     return null;
+  }
+
+  public int getSize() { // jawaban tugas no 5
+    return size;
   }
 }

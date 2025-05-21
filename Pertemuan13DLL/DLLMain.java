@@ -16,6 +16,13 @@ public class DLLMain {
         System.out.println("5. Tampilkan data");
         System.out.println("6. Cari Mahasiswa berdasarkan NIM");
         System.out.println("7. Sisip data setelah NIM tertentu");
+        System.out.println("8. Tambah di indeks tertentu");
+        System.out.println("9. Hapus setelah NIM tertentu");
+        System.out.println("10. Hapus berdasarkan indeks");
+        System.out.println("11. Tampilkan data pertama");
+        System.out.println("12. Tampilkan data terakhir");
+        System.out.println("13. Tampilkan data pada indeks tertentu");
+        System.out.println("14. Tampilkan jumlah data");
         System.out.println("0. Keluar");
         System.out.print("Pilih menu: ");
         pilihan = scan.nextInt();
@@ -49,6 +56,35 @@ public class DLLMain {
             String keyNim = scan.nextLine();
             Mahasiswa01 mhs = inputMahasiswa(scan);
             list.insertAfter(keyNim, mhs);
+          }
+          case 8 -> {
+            System.out.print("Masukkan indeks: ");
+            int index = scan.nextInt();
+            scan.nextLine();
+            Mahasiswa01 mhs = inputMahasiswa(scan);
+            list.add(mhs, index);
+          }
+          case 9 -> {
+            System.out.print("Masukkan NIM acuan: ");
+            String nim = scan.nextLine();
+            list.removeAfter(nim);
+          }
+          case 10 -> {
+            System.out.print("Masukkan indeks yang ingin dihapus: ");
+            int index = scan.nextInt();
+            scan.nextLine();
+            list.remove(index);
+          }
+          case 11 -> list.getFirst();
+          case 12 -> list.getLast();
+          case 13 -> {
+            System.out.print("Masukkan indeks yang ingin ditampilkan: ");
+            int index = scan.nextInt();
+            scan.nextLine();
+            list.getIndex(index);
+          }
+          case 14 -> {
+            System.out.println("Jumlah data saat ini: " + list.getSize());
           }
           case 0 -> System.out.println("Keluar dari program.");
           default -> System.out.println("Pilihan tidak valid!");
