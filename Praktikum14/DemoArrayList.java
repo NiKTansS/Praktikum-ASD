@@ -13,12 +13,13 @@ public class DemoArrayList {
     customers.add(new Customer(4, "Cica"));
     customers.add(new Customer(100, "Rosa"));
 
-    System.out.println(customers.indexOf(customer2));
+    ArrayList<Customer> newCustomers = new ArrayList<>();
+    newCustomers.add(new Customer(201, "Della"));
+    newCustomers.add(new Customer(202, "Victor"));
+    newCustomers.add(new Customer(203, "Sarah"));
 
-    Customer customer = customers.get(1);
-    System.out.println(customer.name);
-    customer.name = "Budi Utomo";
-    
+    customers.addAll(newCustomers);
+
     for (Customer cust : customers) {
     System.out.println(cust.toString());
     }
