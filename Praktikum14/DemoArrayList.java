@@ -20,9 +20,7 @@ public class DemoArrayList {
 
     customers.addAll(newCustomers);
 
-    for (Customer cust : customers) {
-    System.out.println(cust.toString());
-    }
+    System.out.println(customers);
   }
 }
 
