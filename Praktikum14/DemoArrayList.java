@@ -14,7 +14,7 @@ public class DemoArrayList {
     customers.add(new Customer(100, "Rosa"));
 
     ArrayList<Customer> newCustomers = new ArrayList<>();
-    newCustomers.add(new Customer(201, "Della"));
+    newCustomers.add(new Customer(201, "Della")); 
     newCustomers.add(new Customer(202, "Victor"));
     newCustomers.add(new Customer(203, "Sarah"));
 
