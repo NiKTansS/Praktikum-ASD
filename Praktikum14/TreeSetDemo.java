@@ -13,5 +13,9 @@ public class TreeSetDemo {
     for (String temp : fruits) {
       System.out.println(temp);
     }
+
+    for (String temp : fruits) {
+      System.out.println(temp);
+    }
   }
 }
